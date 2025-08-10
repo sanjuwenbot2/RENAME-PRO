@@ -1,19 +1,17 @@
 
-FROM python:latest
+FROM python:3.13-slim
 
 WORKDIR /app
 
-COPY requirements.txt /app/
+COPY requirements.txt .
 
-RUN apt update && apt upgrade -y
-RUN apt install git python3-pip ffmpeg -y
+RUN apt update && apt upgrade -y && \
+    apt install -y git ffmpeg && \
+    pip install --no-cache-dir -r requirements.txt && \
+    apt clean && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
-RUN pip3 install -r requirements.txt
-
-COPY . /app
-
-CMD python3 bot.py
-
 EXPOSE 5000
+
+CMD ["python3", "bot.py"]
