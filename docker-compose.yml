@@ -11,4 +11,3 @@ services:
       - CHANNEL=${CHANNEL}
       - ADMIN=${ADMIN}
       - BOT_PIC=${BOT_PIC}
-       EXPOSE 5000
