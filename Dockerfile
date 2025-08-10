@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python3", "bot.py"]
+CMD ["python3", "-u", "bot.py"]
